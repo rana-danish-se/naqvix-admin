@@ -1,0 +1,79 @@
+import React from 'react';
+
+const VideoForm = ({
+  formData,
+  setFormData,
+  onSubmit,
+  onCancel,
+  saving,
+  isEditing
+}) => {
+  return (
+    <form onSubmit={onSubmit} className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Title *
+        </label>
+        <input
+          type="text"
+          required
+          maxLength="150"
+          value={formData.title || ''}
+          onChange={(e) => setFormData({...formData, title: e.target.value})}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter video title"
+          disabled={saving}
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          YouTube URL *
+        </label>
+        <input
+          type="url"
+          required
+          value={formData.youtubeUrl || ''}
+          onChange={(e) => setFormData({...formData, youtubeUrl: e.target.value})}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="https://www.youtube.com/watch?v=..."
+          disabled={saving}
+        />
+      </div>
+      
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Description
+        </label>
+        <textarea
+          rows="4"
+          value={formData.description || ''}
+          onChange={(e) => setFormData({...formData, description: e.target.value})}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter video description"
+          disabled={saving}
+        />
+      </div>
+
+      <div className="flex justify-end space-x-3 pt-4">
+        <button
+          type="button"
+          onClick={onCancel}
+          className="px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+          disabled={saving}
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          disabled={saving}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors"
+        >
+          {saving ? 'Saving...' : isEditing ? 'Update' : 'Create'}
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default VideoForm;
