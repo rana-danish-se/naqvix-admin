@@ -13,9 +13,13 @@ const Sidebar = () => {
            <img src={assets.order_icon} alt="" className="w-5 h-5" />
            <p className="hidden md:block">List Blogs</p>
         </NavLink>
-        <NavLink to='/orders' className="flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l">
+        <NavLink to='/community' className="flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l">
            <img src={assets.order_icon} alt="" className="w-5 h-5" />
            <p className="hidden md:block">Community</p>
+        </NavLink>
+        <NavLink to='/team' className="flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l">
+           <img src={assets.order_icon} alt="" className="w-5 h-5" />
+           <p className="hidden md:block">Team</p>
         </NavLink>
       </div>
     </div>
